@@ -1,4 +1,6 @@
-﻿@inject SignInManager<FunAppUser> SignInManager
+﻿@using FunApp.Models.DbModels
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<FunAppUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
