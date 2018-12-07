@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using FunApp.Data;
+using FunApp.Models.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using FunApp.Web.Models;
 
@@ -10,34 +10,58 @@ namespace FunApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly FunAppContext db;
+
+        public HomeController(FunAppContext db)
+        {
+            this.db = db;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var jokes =
+                this.db.Jokes
+                    .OrderBy(j => Guid.NewGuid())
+                    .Take(20)
+                    .Select(j => new IndexJokeViewModel
+                    {
+                        Content = j.Content,
+                        CategoryName = j.Category.Name
+                    });
+
+            var viewModel = new IndexViewModel
+            {
+                Jokes = jokes
+            };
+
+            return this.View(viewModel);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            this.ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return this.View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            this.ViewData["Message"] = "Your contact page.";
 
-            return View();
+            var viewModel = this.db.Jokes.Count();
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return this.View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }
 }

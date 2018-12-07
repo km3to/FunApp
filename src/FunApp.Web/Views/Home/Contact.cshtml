@@ -1,8 +1,12 @@
-﻿@{
+﻿@model int
+
+@{
     ViewData["Title"] = "Contact";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
+
+<h4>Collected jokes so far: @this.Model</h4>
 
 <address>
     One Microsoft Way<br />
