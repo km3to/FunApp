@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using FunApp.Models.ViewModels.Jokes;
 using FunApp.Services.Contracts;
 using FunApp.Web.Models.Jokes;
 using Microsoft.AspNetCore.Authorization;
@@ -50,7 +51,7 @@ namespace FunApp.Web.Controllers
 
         public IActionResult Details(int id)
         {
-            var viewModel = this.jokeService.GetJokeById(id);
+            var viewModel = this.jokeService.GetJokeById<JokeDetailsViewModel>(id);
 
             return this.View(viewModel);
         }

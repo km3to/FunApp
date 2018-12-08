@@ -6,7 +6,6 @@ using FunApp.Common;
 using FunApp.Data;
 using FunApp.Models.DbModels;
 using FunApp.Models.ViewModels.Home;
-using FunApp.Models.ViewModels.Jokes;
 using FunApp.Services.Contracts;
 
 namespace FunApp.Services
@@ -50,11 +49,11 @@ namespace FunApp.Services
             return joke.Id;
         }
 
-        public JokeDetailsViewModel GetJokeById(int id)
+        public TViewModel GetJokeById<TViewModel>(int id)
         {
             var result = this.db.Jokes
                 .Where(j => j.Id == id)
-                .To<JokeDetailsViewModel>()
+                .To<TViewModel>()
                 .FirstOrDefault();
 
             return result;

@@ -13,6 +13,6 @@ namespace FunApp.Services.Contracts
 
         Task<int> CreateAsync(int categoryId, string content);
 
-        JokeDetailsViewModel GetJokeById(int id);
+        TViewModel GetJokeById<TViewModel>(int id);
     }
 }
