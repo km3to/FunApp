@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FunApp.Common\FunApp.Common.csproj" />
     <ProjectReference Include="..\FunApp.Data\FunApp.Data.csproj" />
     <ProjectReference Include="..\FunApp.Models\FunApp.Models.csproj" />
   </ItemGroup>

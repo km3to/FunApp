@@ -1,6 +1,9 @@
-﻿namespace FunApp.Models.ViewModels.Jokes
+﻿using FunApp.Common.Contracts;
+using FunApp.Models.DbModels;
+
+namespace FunApp.Models.ViewModels.Jokes
 {
-    public class JokeDetailsViewModel
+    public class JokeDetailsViewModel : IMapFrom<Joke>
     {
         public string Content { get; set; }
 

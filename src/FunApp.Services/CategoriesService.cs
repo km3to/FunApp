@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FunApp.Common;
 using FunApp.Data;
 using FunApp.Models.ViewModels.Jokes;
 using FunApp.Services.Contracts;
@@ -20,11 +21,7 @@ namespace FunApp.Services
             return
                 this.db.Categories
                     .OrderBy(c => c.Name)
-                    .Select(c => new IdAndNameViewModel
-                    {
-                        Id = c.Id,
-                        Name = c.Name
-                    })
+                    .To<IdAndNameViewModel>()
                     .ToList();
         }
 

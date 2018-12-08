@@ -1,7 +1,10 @@
-﻿using FunApp.Data;
+﻿using FunApp.Common;
+using FunApp.Data;
 using FunApp.Models.DbModels;
+using FunApp.Models.ViewModels.Home;
 using FunApp.Services;
 using FunApp.Services.Contracts;
+using FunApp.Web.Models.Jokes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +50,10 @@ namespace FunApp.Web
                 .AddEntityFrameworkStores<FunAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            AutoMapperConfig.RegisterMappings(
+                typeof(IndexViewModel).Assembly,
+                typeof(CreateJokeViewModel).Assembly);
 
             services.AddScoped<IJokeService, JokeService>();
             services.AddScoped<ICategoriesService, CategoriesService>();

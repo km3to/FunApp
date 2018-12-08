@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FunApp.Common;
 using FunApp.Data;
 using FunApp.Models.DbModels;
 using FunApp.Models.ViewModels.Home;
@@ -24,12 +25,7 @@ namespace FunApp.Services
             var result = this.db.Jokes
                 .OrderBy(j => Guid.NewGuid())
                 .Take(count)
-                .Select(j => new IndexJokeViewModel
-                {
-                    Id = j.Id,
-                    Content = j.Content,
-                    CategoryName = j.Category.Name
-                })
+                .To<IndexJokeViewModel>()
                 .ToList();
 
             return result;
@@ -58,11 +54,7 @@ namespace FunApp.Services
         {
             var result = this.db.Jokes
                 .Where(j => j.Id == id)
-                .Select(j => new JokeDetailsViewModel
-                {
-                    Content = j.Content,
-                    CategoryName = j.Category.Name
-                })
+                .To<JokeDetailsViewModel>()
                 .FirstOrDefault();
 
             return result;
