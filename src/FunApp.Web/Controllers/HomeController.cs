@@ -1,22 +1,17 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using FunApp.Data;
+﻿using System.Diagnostics;
+using FunApp.Models;
 using FunApp.Models.ViewModels.Home;
 using FunApp.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using FunApp.Web.Models;
 
 namespace FunApp.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IJokeService jokeService;
-        private readonly FunAppContext db;
 
-        public HomeController(FunAppContext db, IJokeService jokeService)
+        public HomeController(IJokeService jokeService)
         {
-            this.db = db;
             this.jokeService = jokeService;
         }
 
@@ -35,15 +30,6 @@ namespace FunApp.Web.Controllers
             this.ViewData["Message"] = "Your application description page.";
 
             return this.View();
-        }
-
-        public IActionResult Contact()
-        {
-            this.ViewData["Message"] = "Your contact page.";
-
-            var viewModel = this.db.Jokes.Count();
-
-            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

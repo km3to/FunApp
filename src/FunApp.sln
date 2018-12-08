@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3D30FC31
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandBox", "Tests\SandBox\SandBox.csproj", "{7C1A86D3-D985-498B-9443-0C51EB7D010D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Models", "FunApp.Models\FunApp.Models.csproj", "{2E34BA79-1F12-459C-9D7E-4B742A725178}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Models", "FunApp.Models\FunApp.Models.csproj", "{2E34BA79-1F12-459C-9D7E-4B742A725178}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Services", "FunApp.Services\FunApp.Services.csproj", "{9C97D46A-0D40-4D0D-90CF-DAB897187232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Services", "FunApp.Services\FunApp.Services.csproj", "{9C97D46A-0D40-4D0D-90CF-DAB897187232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Common", "FunApp.Common\FunApp.Common.csproj", "{0914B506-5B8B-4C4E-9042-BC0C9D318260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{9C97D46A-0D40-4D0D-90CF-DAB897187232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C97D46A-0D40-4D0D-90CF-DAB897187232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C97D46A-0D40-4D0D-90CF-DAB897187232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0914B506-5B8B-4C4E-9042-BC0C9D318260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0914B506-5B8B-4C4E-9042-BC0C9D318260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0914B506-5B8B-4C4E-9042-BC0C9D318260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0914B506-5B8B-4C4E-9042-BC0C9D318260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,6 +14,7 @@
                 </div>
                 <div class="panel-footer">
                     @joke.CategoryName
+                    <a asp-controller="Jokes" asp-action="Details" asp-route-id="@joke.Id" class="btn btn-default btn-sm">View</a>
                 </div>
             </div>
         </div>
