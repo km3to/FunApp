@@ -10,6 +10,8 @@ namespace FunApp.Models.ViewModels.Home
 
         public string Content { get; set; }
 
+        public string HtmlContent => this.Content.Replace("\n", "<br />\n");
+
         public string CategoryName { get; set; }
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
