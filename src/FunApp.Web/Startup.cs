@@ -1,5 +1,7 @@
 ﻿using FunApp.Data;
 using FunApp.Models.DbModels;
+using FunApp.Services;
+using FunApp.Services.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +47,8 @@ namespace FunApp.Web
                 .AddEntityFrameworkStores<FunAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IJokeService, JokeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using FunApp.Data;
 using FunApp.Models.ViewModels.Home;
+using FunApp.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using FunApp.Web.Models;
 
@@ -10,28 +11,20 @@ namespace FunApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IJokeService jokeService;
         private readonly FunAppContext db;
 
-        public HomeController(FunAppContext db)
+        public HomeController(FunAppContext db, IJokeService jokeService)
         {
             this.db = db;
+            this.jokeService = jokeService;
         }
 
         public IActionResult Index()
         {
-            var jokes =
-                this.db.Jokes
-                    .OrderBy(j => Guid.NewGuid())
-                    .Take(20)
-                    .Select(j => new IndexJokeViewModel
-                    {
-                        Content = j.Content,
-                        CategoryName = j.Category.Name
-                    });
-
             var viewModel = new IndexViewModel
             {
-                Jokes = jokes
+                Jokes = this.jokeService.GetRandomJokes(20)
             };
 
             return this.View(viewModel);
