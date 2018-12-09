@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Models", "FunApp.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Services", "FunApp.Services\FunApp.Services.csproj", "{9C97D46A-0D40-4D0D-90CF-DAB897187232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Common", "FunApp.Common\FunApp.Common.csproj", "{0914B506-5B8B-4C4E-9042-BC0C9D318260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Common", "FunApp.Common\FunApp.Common.csproj", "{0914B506-5B8B-4C4E-9042-BC0C9D318260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

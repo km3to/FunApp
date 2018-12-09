@@ -20,8 +20,10 @@
                 <select asp-for="CategoryId" asp-items="categories" class="form-control"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
+            <div id="SuggestedCategory"></div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-info btn-sm" />
+                <input value="Suggest category" class="btn btn-default btn-sm" id="CategorizeButton" />
             </div>
         </form>
     </div>
@@ -34,4 +36,20 @@
 @section Scripts
 {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $("#CategorizeButton").click(function () {
+            var joke = $("#Content").val();
+            $.ajax({
+                type: "POST",
+                url: "/Jokes/SuggestCategory",
+                data: { joke: joke },
+                success: (data) => $("#CategoryId").val(data.categoryId)
+                //success: function(data) {
+                //    $("#SuggestedCategory").html("Suggested category: " + data.categoryName);
+                //    $("#CategoryId").val(data.categoryId);
+                //}
+            });
+        });
+    </script>
 }

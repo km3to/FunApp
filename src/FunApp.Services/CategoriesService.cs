@@ -26,5 +26,12 @@ namespace FunApp.Services
         }
 
         public bool IsCategoryValid(int categoryId) => this.db.Categories.Any(c => c.Id == categoryId);
+
+        public int? GetCategoryId(string name)
+        {
+            var category = this.db.Categories.FirstOrDefault(c => c.Name == name);
+
+            return category?.Id;
+        }
     }
 }

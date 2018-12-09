@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FunApp.Models.ViewModels.Jokes;
 using FunApp.Services.Contracts;
+using FunApp.Web.ML.Contracts;
 using FunApp.Web.Models.Jokes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,16 @@ namespace FunApp.Web.Controllers
     {
         private readonly IJokeService jokeService;
         private readonly ICategoriesService categoriesService;
+        private readonly IJokesCategorizer jokesCategorizer;
 
-        public JokesController(IJokeService jokeService, ICategoriesService categoriesService)
+        public JokesController(
+            IJokeService jokeService, 
+            ICategoriesService categoriesService, 
+            IJokesCategorizer jokesCategorizer)
         {
             this.jokeService = jokeService;
             this.categoriesService = categoriesService;
+            this.jokesCategorizer = jokesCategorizer;
         }
 
         [Authorize]
@@ -55,5 +61,25 @@ namespace FunApp.Web.Controllers
 
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public SuggestCategoryResult SuggestCategory(string joke)
+        {
+            var category = this.jokesCategorizer.Categorize("ML/Models/JokesCategoryModel.zip", joke);
+            var categoryId = this.categoriesService.GetCategoryId(category);
+
+            return new SuggestCategoryResult
+            {
+                CategoryId = categoryId ?? 0,
+                CategoryName = category
+            };
+        }
+    }
+
+    public class SuggestCategoryResult
+    {
+        public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.ML" Version="0.8.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
   </ItemGroup>
 
@@ -16,6 +17,12 @@
     <ProjectReference Include="..\FunApp.Data\FunApp.Data.csproj" />
     <ProjectReference Include="..\FunApp.Models\FunApp.Models.csproj" />
     <ProjectReference Include="..\FunApp.Services\FunApp.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ML\Models\JokesCategoryModel.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

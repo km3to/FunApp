@@ -8,5 +8,7 @@ namespace FunApp.Services.Contracts
         IEnumerable<IdAndNameViewModel> GetAll();
 
         bool IsCategoryValid(int categoryId);
+
+        int? GetCategoryId(string name);
     }
 }

@@ -4,6 +4,8 @@ using FunApp.Models.DbModels;
 using FunApp.Models.ViewModels.Home;
 using FunApp.Services;
 using FunApp.Services.Contracts;
+using FunApp.Web.ML;
+using FunApp.Web.ML.Contracts;
 using FunApp.Web.Models.Jokes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -57,6 +59,7 @@ namespace FunApp.Web
 
             services.AddScoped<IJokeService, JokeService>();
             services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<IJokesCategorizer, JokesCategorizer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
